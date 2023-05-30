@@ -1,50 +1,64 @@
-{% load static %}
-{% load static tailwind_tags %}
+{% load static %} {% load static tailwind_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Document</title>
     {% tailwind_css %}
-</head>
+  </head>
 
-<body class="bg-gradient-to-t from-slate-700 to-slate-500 h-screen">
+  <body class="bg-gradient-to-t from-slate-700 to-slate-500 h-screen">
     <div class="p-10 flex justify-between pl-80 pr-60 gap-x-10 items-center">
-        <img class="w-40" src="{% static 'img.svg' %}" alt="logo">
-        <ul class="flex gap-x-16 text-white text-3xl font-Quicksand">
-            <li>
-                <a href="/">Traductor</a>
-            </li>
-            <li>
-                <a href="/integrantes">Integrantes del Equipo</a>
-            </li>
-        </ul>
+      <img class="w-40" src="{% static 'img.svg' %}" alt="logo" />
+      <ul class="flex gap-x-16 text-white text-3xl font-Quicksand">
+        <li>
+          <a href="/">Traductor</a>
+        </li>
+        <li>
+          <a href="/integrantes">Integrantes del Equipo</a>
+        </li>
+      </ul>
     </div>
+  </body>
 
-</body>
-{% block content %}
+  {% block content %}
 
-<form id="traductorForm" action="" class="w-3/6 mx-auto">
+  <form id="traductorForm" action="" class="w-3/6 mx-auto">
+
     <div class="mx-auto">
-      <label for="message" class="block mb-2 text-2xl font-medium text-gray-900 dark:text-white">Español</label>
-      {% csrf_token %}
+      <label
+        for="message"
+        class="block mb-2 text-2xl font-medium text-gray-900 dark:text-white font-Quicksand"
+        >{{lblOrigen}}</label
+      >
+      
+      {% csrf_token %} 
       {{ TextoEs.texto }}
-      <label for="message" class="block mb-2 text-2xl font-medium text-gray-900 dark:text-white">Inglés</label>
-      <textarea id="message" rows="6" readonly
-      class="block p-2.5 w-full text-2xl text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">{{ resultado}}</textarea>
+
+      {% csrf_token %}
+      {{ InputS.idioma }}
+      <textarea
+        id="message"
+        rows="6"
+        readonly
+        class="block p-2.5 w-full text-2xl text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 font-Quicksand"
+      >
+{{ resultado}}</textarea
+      >
     </div>
     <div class="flex justify-center mt-10">
-      <button type="submit" class="py-3 px-10 text-2xl font-medium text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+
+      <button
+        type="submit"
+        class="py-3 px-10 text-2xl font-medium text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800 font-Quicksand"
+      >
         Traducir texto
       </button>
-
     </div>
   </form>
-  {% endblock %} 
-
+  {% endblock %}
 </html>
